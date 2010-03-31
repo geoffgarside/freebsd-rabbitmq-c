@@ -12,4 +12,3 @@ lib/librabbitmq.a
 lib/librabbitmq.la
 lib/librabbitmq.so
 lib/librabbitmq.so.0
-

@@ -8,20 +8,20 @@
 PORTNAME=	rabbitmq-c
 PORTVERSION=	0.0.1
 #PORTREVISION=	0
-DISTVERSION=	4e789c776a45
-CODEVERSION=	821f5ee7b040
 CATEGORIES=	net
 MASTER_SITES=	http://hg.rabbitmq.com/rabbitmq-c/archive/:c \
 		http://hg.rabbitmq.com/rabbitmq-codegen/archive/:codegen
-DISTNAME=	${PORTNAME}-${DISTVERSION}
-DISTFILES=	${DISTVERSION}.tar.bz2:c \
-		${CODEVERSION}.tar.bz2:codegen
+DISTREVISION=	4e789c776a45
+CODEREVISION=	821f5ee7b040
+DISTNAME=	${PORTNAME}-${DISTREVISION}
+DISTFILES=	${DISTREVISION}.tar.bz2:c \
+		${CODEREVISION}.tar.bz2:codegen
 DIST_SUBDIR=	rabbitmq
 
 MAINTAINER=	rabbitmq@geoffgarside.co.uk
 COMMENT=	RabbitMQ C AMQP client library
 
-BUILD_DEPENDS=  ${PYTHON_PKGNAMEPREFIX}simplejson>=2.0:${PORTSDIR}/devel/py-simplejson
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}simplejson>=2.0:${PORTSDIR}/devel/py-simplejson
 
 USE_BZIP2=	YES
 USE_GMAKE=	YES
@@ -52,7 +52,7 @@ post-install:
 	${STRIP_CMD} ${PREFIX}/lib/librabbitmq.so.0
 
 post-extract:
-	@${REINPLACE_CMD} -e 's|rabbitmq-codegen|rabbitmq-codegen-${CODEVERSION}|g' ${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e 's|rabbitmq-codegen|rabbitmq-codegen-${CODEREVISION}|g' ${WRKSRC}/configure.ac
 
 pre-configure:
 	@(cd ${CONFIGURE_WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${LIBTOOLIZE})
