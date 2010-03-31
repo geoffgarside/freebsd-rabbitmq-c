@@ -5,17 +5,16 @@
 # $FreeBSD$
 #
 
-PORTNAME=	rabbitmq-c-devel
+PORTNAME=	rabbitmq-c
 PORTVERSION=	0.0.1
 #PORTREVISION=	0
 CATEGORIES=	net
 MASTER_SITES=	http://hg.rabbitmq.com/rabbitmq-c/archive/:c \
 		http://hg.rabbitmq.com/rabbitmq-codegen/archive/:codegen
-DISTREVISION=	17b9fb0d63d3
-CODEREVISION=	fc46914f99b7
-DISTNAME=	${PORTNAME}-${DISTREVISION}
-DISTFILES=	${DISTREVISION}.tar.bz2:c \
-		${CODEREVISION}.tar.bz2:codegen
+PKGNAMESUFFIX=	-devel
+DISTNAME=	${PORTNAME}-17b9fb0d63d3
+DISTFILES=	17b9fb0d63d3.tar.bz2:c \
+		fc46914f99b7.tar.bz2:codegen
 DIST_SUBDIR=	rabbitmq
 
 MAINTAINER=	rabbitmq@geoffgarside.co.uk
@@ -52,7 +51,7 @@ post-install:
 	${STRIP_CMD} ${PREFIX}/lib/librabbitmq.so.0
 
 post-extract:
-	@${REINPLACE_CMD} -e 's|rabbitmq-codegen|rabbitmq-codegen-${CODEREVISION}|g' ${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e 's|rabbitmq-codegen|rabbitmq-codegen-fc46914f99b7|g' ${WRKSRC}/configure.ac
 
 pre-configure:
 	@(cd ${CONFIGURE_WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${LIBTOOLIZE})

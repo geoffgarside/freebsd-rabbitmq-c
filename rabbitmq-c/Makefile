@@ -11,11 +11,9 @@ PORTVERSION=	0.0.1
 CATEGORIES=	net
 MASTER_SITES=	http://hg.rabbitmq.com/rabbitmq-c/archive/:c \
 		http://hg.rabbitmq.com/rabbitmq-codegen/archive/:codegen
-DISTREVISION=	4e789c776a45
-CODEREVISION=	821f5ee7b040
-DISTNAME=	${PORTNAME}-${DISTREVISION}
-DISTFILES=	${DISTREVISION}.tar.bz2:c \
-		${CODEREVISION}.tar.bz2:codegen
+DISTNAME=	${PORTNAME}-4e789c776a45
+DISTFILES=	4e789c776a45.tar.bz2:c \
+		821f5ee7b040.tar.bz2:codegen
 DIST_SUBDIR=	rabbitmq
 
 MAINTAINER=	rabbitmq@geoffgarside.co.uk
@@ -52,7 +50,7 @@ post-install:
 	${STRIP_CMD} ${PREFIX}/lib/librabbitmq.so.0
 
 post-extract:
-	@${REINPLACE_CMD} -e 's|rabbitmq-codegen|rabbitmq-codegen-${CODEREVISION}|g' ${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e 's|rabbitmq-codegen|rabbitmq-codegen-821f5ee7b040|g' ${WRKSRC}/configure.ac
 
 pre-configure:
 	@(cd ${CONFIGURE_WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${LIBTOOLIZE})
