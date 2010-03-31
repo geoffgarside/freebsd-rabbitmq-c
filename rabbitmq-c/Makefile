@@ -52,16 +52,9 @@ post-install:
 	${STRIP_CMD} ${PREFIX}/lib/librabbitmq.so.0
 
 post-extract:
-#	@${MV} ${WRKDIR}/rabbitmq-codegen-821f5ee7b040 ${WRKDIR}/rabbitmq-codegen
 	@${REINPLACE_CMD} -e 's|rabbitmq-codegen|rabbitmq-codegen-${CODEVERSION}|g' ${WRKSRC}/configure.ac
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|AM_PROG_LIBTOOL|AC_PROG_LIBTOOL|g' ${WRKSRC}/configure.ac
 
 pre-configure:
 	@(cd ${CONFIGURE_WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${LIBTOOLIZE})
-
-#pre-build:
-#	@${LOCALBASE}/bin/autoreconf-${AUTOMAKE_SUFFIX}
 
 .include <bsd.port.mk>
