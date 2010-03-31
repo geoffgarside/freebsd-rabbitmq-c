@@ -18,7 +18,7 @@ DISTFILES=	${DISTVERSION}.tar.bz2:c \
 		${CODEVERSION}.tar.bz2:codegen
 DIST_SUBDIR=	rabbitmq
 
-MAINTAINER=	freebsd@geoffgarside.co.uk
+MAINTAINER=	rabbitmq@geoffgarside.co.uk
 COMMENT=	RabbitMQ C AMQP client library
 
 BUILD_DEPENDS=  ${PYTHON_PKGNAMEPREFIX}simplejson>=2.0:${PORTSDIR}/devel/py-simplejson
